@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Minesweeper from '../gameLogic';
 
 class Game extends React.Component {
     constructor(props) {

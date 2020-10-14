@@ -13,9 +13,9 @@ Tile.DELTAS = [
 ]
 
 export class Tile {
-    constructor(board, position) {
+    constructor(board, pos) {
         this.board = board;
-        this.position = position;
+        this.pos = pos;
         this.bombed = false;
         this.explored = false;
         this.flagged = false;
@@ -45,13 +45,15 @@ export class Tile {
     }
 
     neighbors() {
-        const adjacentCoordinants = [];
+        const adjacentCoords = [];
         Tile.DELTAS.forEach(delta => {
-            const newPosition = [delta[0] + this.position[0], delta[1] + this.position[1]];
-            if (this.board.onBoard(newPosition)) {
-                adjacentCoordinants.push(newPosition);
+            const newPos = [delta[0] + this.pos[0], delta[1] + this.pos[1]];
+            if (this.board.onBoard(newPos)) {
+                adjacentCoords.push(newPos);
             }
         })
+
+        return adjacentCoords.map(coord => this.board.grid[coord[0]][corrd[1]]);
     }
 
     plantBomb() {
@@ -87,16 +89,16 @@ export class Board {
         }
     }
 
-    onBoard(position) {
+    onBoard(pos) {
         return (
-            position[0] >= 0 && position[0] < this.gridSize && 
-                position[1] >= 0 && position[1] < this.gridSize
+            pos[0] >= 0 && pos[0] < this.gridSize && 
+                pos[1] >= 0 && pos[1] < this.gridSize
         );
     }
 
     plantBombs() {
         let totalPlantedBombs = 0;
-        while(totalPlantedBombs < this.numBombs) {
+        while (totalPlantedBombs < this.numBombs) {
             const row = Math.floor(Math.random() * (this.gridSize - 1));
             const col = Math.floor(Math.random() * (this.gridSize - 1));
 
