@@ -1,17 +1,3 @@
-import { getHashes } from "crypto";
-import { number } from "prop-types";
-
-Tile.DELTAS = [
-    [-1, -1],
-    [-1, 0],
-    [-1, 1],
-    [0, -1],
-    [0, 1],
-    [1, -1],
-    [1, 0],
-    [1, 1]
-]
-
 export class Tile {
     constructor(board, pos) {
         this.board = board;
@@ -25,10 +11,10 @@ export class Tile {
         let bombCount = 0;
         this.neighbors().forEach(neighbor => {
             if (neighbor.bombed) {
-                bombCount += 1
+                bombCount++;
             }
         });
-        return bombCount
+        return bombCount;
     }
 
     explore() {
@@ -42,6 +28,7 @@ export class Tile {
                 tile.explore();
             });
         }
+
     }
 
     neighbors() {
@@ -51,9 +38,9 @@ export class Tile {
             if (this.board.onBoard(newPos)) {
                 adjacentCoords.push(newPos);
             }
-        })
+        });
 
-        return adjacentCoords.map(coord => this.board.grid[coord[0]][corrd[1]]);
+        return adjacentCoords.map(coord => this.board.grid[coord[0]][coord[1]]);
     }
 
     plantBomb() {
@@ -63,12 +50,15 @@ export class Tile {
     toggleFlag() {
         if (!this.explored) {
             this.flagged = !this.flagged;
-            return true
+            return true;
         }
 
-        return false
+        return false;
     }
 }
+
+Tile.DELTAS = [[-1, -1], [-1, 0], [-1, 1], [0, -1],
+[0, 1], [1, -1], [1, 0], [1, 1]];
 
 export class Board {
     constructor(gridSize, numBombs) {
@@ -84,15 +74,15 @@ export class Board {
             this.grid.push([]);
             for (let j = 0; j < this.gridSize; j++) {
                 const tile = new Tile(this, [i, j]);
-                this.grid[i].push[tile];
+                this.grid[i].push(tile);
             }
         }
     }
 
     onBoard(pos) {
         return (
-            pos[0] >= 0 && pos[0] < this.gridSize && 
-                pos[1] >= 0 && pos[1] < this.gridSize
+            pos[0] >= 0 && pos[0] < this.gridSize &&
+            pos[1] >= 0 && pos[1] < this.gridSize
         );
     }
 
@@ -105,7 +95,7 @@ export class Board {
             let tile = this.grid[row][col];
             if (!tile.bombed) {
                 tile.plantBomb();
-                totalPlantedBombs++
+                totalPlantedBombs++;
             }
         }
     }
@@ -119,7 +109,7 @@ export class Board {
                 }
             });
         });
-        return lost
+        return lost;
     }
 
     won() {
@@ -127,10 +117,10 @@ export class Board {
         this.grid.forEach(row => {
             row.forEach(tile => {
                 if (tile.flagged === tile.revealed || tile.flagged !== tile.bombed) {
-                    won = false
+                    won = false;
                 }
             });
         });
-        return won
+        return won;
     }
 }

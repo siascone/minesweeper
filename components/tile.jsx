@@ -3,11 +3,49 @@ import React from 'react';
 class Tile extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        event.preventDefault();
+        let flagged
+        if (event.altKey) {
+            flagged = true
+        } else {
+            flagged = false
+        }
+
+        this.props.updateGame(this.props.tile, flagged)
     }
 
     render() {
+        const tile = this.props.tile
+        let text
+        let klass
+        let count
+        if (tile.explored) {
+            if (tile.bombed) {
+                klass = 'bombed';
+                // text = '\U+1F4A3';
+                text = 'B';
+            } else {
+                klass = 'explored';
+                count = tile.adjacentBombCount();
+                text = (count > 0 ? `${count}` : '');
+            }
+        } else if (tile.flagged) {
+            klass = 'flagged'
+            // text = '\U+2691';
+            text = 'F';
+        } else {
+            klass = 'unexplored';
+            text = 'U'
+        }
+
+        klass = `tile ${klass}`;
         return (
-            <div>T</div>
+            <div className={klass} onClick={this.handleClick}>{text}</div>
         );
     }
 }
