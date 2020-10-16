@@ -11,7 +11,7 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='baord-gird'>
                 {this.renderRows()}
             </div>
         );
@@ -21,7 +21,7 @@ class Board extends React.Component {
         const board = this.props.board
         return board.grid.map((row, idx) => {
             return (
-                <div>
+                <div className='board-row'>
                     {this.renderTiles(row, idx)}
                 </div>
             );

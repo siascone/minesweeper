@@ -9,7 +9,8 @@ class Game extends React.Component {
         this.state = { board: board };
 
         this.updateGame = this.updateGame.bind(this);
-        this.newGame = this.newGame.bind(this)
+        this.newGame = this.newGame.bind(this);
+        this.dificulty = this.dificulty.bind(this);
     }
 
     updateGame(tile, flagged) {
@@ -22,11 +23,20 @@ class Game extends React.Component {
         this.setState({ board: this.state.board });
     }
 
-    // dificulty(event) {
-    //     event.preventDefault();
-        
-
-    // }
+    dificulty(event) {
+        event.preventDefault();
+        let dificulty = document.getElementsByName('dificulty');
+        if (dificulty.value === 'easy') {
+            const board = new Minesweeper.Board(8, 10)
+            this.setState({ board: board })
+        } else if (dificulty.value === 'medium') {
+            const board = new Minesweeper.Board(16, 40)
+            this.setState({ board: board })
+        } else if (dificulty.value === 'hard') {
+            const board = new Minesweeper.Board(21, 99)
+            this.setState({ board: board })
+        }
+    }
 
     newGame(event) {
         event.preventDefault();
@@ -46,16 +56,39 @@ class Game extends React.Component {
             }
 
             modal = 
-                <div>
+                <div className='modal'>
                     {text}
                 </div>
         }
 
+        let newGame
+
+        if (this.state.board.won() || !this.state.board.lost()) {
+            newGame = '🙂'
+        } else {
+            newGame = '☹️'
+        }
+
+        
+
         return (
-            <div>
+            <div className="game-main">
                 {modal}
-                <Board board={this.state.board} updateGame={this.updateGame}/>
-                <button onClick={this.newGame}>New Game</button>
+                <h1>Minesweeper</h1>
+                <div className='game-area'>
+                    <div className='game-controles'>
+                        <button onClick={this.newGame}>New Game</button>
+                        {/* <label for='dificulty'></label> */}
+                        <select onChange={this.dificulty()} name="dificiulty" id="dificulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div className='game-board'>
+                        <Board board={this.state.board} updateGame={this.updateGame}/>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,66 @@
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.game-main {
+    justify-content: center;
+    align-items: center;
+}
+
+.game-area {
+    justify-content: center;
+}
+
+.game-controles {
+    display: flex;
+    justify-content: space-between;
+    border-top: lightgray solid 10px;
+    border-left: lightgray solid 10px;
+    border-right: lightgray solid 10px;
+    background: lightgray;
+}
+
+.game-controles button {
+    /* font-size: 24px;
+    background: lightgray;
+    border: none;
+    color: yellow; */
+}
+
+.game-board {
+    display: flex;
+    justify-items: center;
+    border: solid 10px lightgray;
+    /* background: lightgray; */
+
+}
+
+.board-grid {
+
+}
+
+.board-row {
+    display: flex;
+}
+
+.tile {
+    height: 20px;
+    width: 20px;
+    border-style: outset;
+    background: lightgray;
+    text-align: center;
+}
+.bombed, .flagged {
+    color: red;
+}
+
+.explored {
+    border-style: inset;
+}
+
