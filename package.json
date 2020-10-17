@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack",
+    "test": "webpack --watch --mode=development",
     "postinstall": "webpack"
   },
   "repository": {
