@@ -5,7 +5,7 @@ import * as Minesweeper from '../gameLogic';
 class Game extends React.Component {
     constructor(props) {
         super(props);
-        const board = new Minesweeper.Board(9, 10);
+        const board = new Minesweeper.Board(8, 10);
         this.state = { board: board };
 
         this.updateGame = this.updateGame.bind(this);
