@@ -24,7 +24,7 @@ class Game extends React.Component {
     }
 
     dificulty(event) {
-        event.preventDefault();
+        // event.preventDefault();
         let dificulty = document.getElementsByName('dificulty');
         if (dificulty.value === 'easy') {
             const board = new Minesweeper.Board(8, 10)
