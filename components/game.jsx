@@ -38,7 +38,6 @@ class Game extends React.Component {
     }
 
     newGame(e) {
-        debugger
         e.preventDefault();
         this.dificulty()
     }
