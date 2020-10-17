@@ -8,41 +8,96 @@ h1 {
   text-align: center;
 }
 
+p {
+    font-size: 12px;
+    text-align: center;
+    margin: 3px
+}
+
+select {
+    background-color: rgb(239, 239, 239);
+}
+
+select:focus {
+    outline: none;
+}
+
 .game-main {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.instructions {
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
 .game-area {
     justify-content: center;
+    position: relative;
+    background: lightgray;
+    border: lightgray solid 7px;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    border: lightgray solid 7px;
+    height: 60px;
+    width: 150px;
+    background: lightgray;
+    margin-top: 100px;
+    position: absolute;
+    z-index: 10;
+}
+
+.inner-modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-left: lightgray solid 3px;
+    border-top: lightgray solid 3px;
+    border-right: white solid 2px;
+    border-bottom: white solid 2px;
+    border-style: inset;
 }
 
 .game-controles {
     display: flex;
     justify-content: space-between;
-    border-top: lightgray solid 10px;
-    border-left: lightgray solid 10px;
-    border-right: lightgray solid 10px;
+    padding: 10px 10px 10px 10px;
     background: lightgray;
+    border-left: lightgray solid 3px;
+    border-top: lightgray solid 3px;
+    border-right: white solid 2px;
+    border-bottom: white solid 2px;
+    border-style: inset;
 }
 
 .game-controles button {
-    /* font-size: 24px;
-    background: lightgray;
-    border: none;
-    color: yellow; */
+
+}
+
+.spacer {
+    height: 3px;
 }
 
 .game-board {
     display: flex;
     justify-items: center;
-    border: solid 10px lightgray;
-    /* background: lightgray; */
-
-}
-
-.board-grid {
-
+    background: lightgray;
+    border-left: lightgray solid 3px;
+    border-top: lightgray solid 3px;
+    border-right: white solid 2px;
+    border-bottom: white solid 2px;
+    border-style: inset;
 }
 
 .board-row {
@@ -50,13 +105,19 @@ h1 {
 }
 
 .tile {
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
     border-style: outset;
     background: lightgray;
     text-align: center;
+    font-size: 14px;
 }
-.bombed, .flagged {
+.bombed {
+    color: red;
+    border-style: inset;
+} 
+
+.flagged {
     color: red;
 }
 

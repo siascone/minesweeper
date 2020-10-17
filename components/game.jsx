@@ -55,39 +55,38 @@ class Game extends React.Component {
 
             modal = 
                 <div className='modal'>
-                    {text}
-                    <button onClick={this.newGame}>New Game</button>
+                    <div className='inner-modal'>
+                        {text}
+                        <button onClick={this.newGame}>New Game</button>
+                    </div>
                 </div>
         }
 
-        let newGame
-
-        if (this.state.board.won() || !this.state.board.lost()) {
-            newGame = '🙂'
-        } else {
-            newGame = '☹️'
-        }
-
-        
+        let bomb = '💣'
 
         return (
             <div className="game-main">
                 {modal}
-                <h1>Minesweeper</h1>
+                <h1>Minesweeper {bomb}</h1>
+                <div className='instructions'>
+                    <p>Click to explore a tile.</p>
+                    <p>alt+Click to flag a tile.</p>
+                </div>
                 <div className='game-area'>
                     <div className='game-controles'>
                         <button onClick={this.newGame}>New Game</button>
-                        {/* <label for='dificulty'></label> */}
                         <select onChange={this.dificulty} name="dificiulty" id="dificulty">
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>
                         </select>
                     </div>
+                    <div className='spacer'></div>
                     <div className='game-board'>
                         <Board board={this.state.board} updateGame={this.updateGame}/>
                     </div>
                 </div>
+                
             </div>
         );
     }

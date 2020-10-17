@@ -27,7 +27,7 @@ class Tile extends React.Component {
         if (tile.explored) {
             if (tile.bombed) {
                 klass = 'bombed';
-                text = '\u2622';
+                text = '💣';
             } else {
                 klass = 'explored';
                 count = tile.adjacentBombCount();
@@ -35,7 +35,7 @@ class Tile extends React.Component {
             }
         } else if (tile.flagged) {
             klass = 'flagged'
-            text = '\u2691';
+            text = '⛳️';
         } else {
             klass = 'unexplored';
         }
