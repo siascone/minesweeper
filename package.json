@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://siascone.github.io/minesweeper/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --mode=development"
@@ -18,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/siascone/minesweeper/issues"
   },
+  "homepage": "https://github.com/siascone/minesweeper#readme",
   "dependencies": {
     "-": "0.0.1",
     "@babel/core": "^7.12.0",
