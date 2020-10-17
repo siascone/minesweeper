@@ -23,9 +23,8 @@ class Game extends React.Component {
         this.setState({ board: this.state.board });
     }
 
-    dificulty(event) {
-        // event.preventDefault();
-        let dificulty = document.getElementsByName('dificulty');
+    dificulty(e) {
+        let dificulty = document.getElementById('dificulty');
         if (dificulty.value === 'easy') {
             const board = new Minesweeper.Board(8, 10)
             this.setState({ board: board })
@@ -38,10 +37,9 @@ class Game extends React.Component {
         }
     }
 
-    newGame(event) {
-        event.preventDefault();
-        const board = new Minesweeper.Board(9, 10)
-        this.setState({ board: board})
+    newGame(e) {
+        e.preventDefault();
+        this.dificulty()
     }
 
     render() {
@@ -58,6 +56,7 @@ class Game extends React.Component {
             modal = 
                 <div className='modal'>
                     {text}
+                    <button onClick={this.newGame}>New Game</button>
                 </div>
         }
 
@@ -79,7 +78,7 @@ class Game extends React.Component {
                     <div className='game-controles'>
                         <button onClick={this.newGame}>New Game</button>
                         {/* <label for='dificulty'></label> */}
-                        <select onChange={this.dificulty()} name="dificiulty" id="dificulty">
+                        <select onChange={this.dificulty} name="dificiulty" id="dificulty">
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>

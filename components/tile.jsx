@@ -7,10 +7,10 @@ class Tile extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event) {
-        event.preventDefault();
+    handleClick(e) {
+        e.preventDefault();
         let flagged
-        if (event.altKey) {
+        if (e.altKey) {
             flagged = true
         } else {
             flagged = false
@@ -28,7 +28,6 @@ class Tile extends React.Component {
             if (tile.bombed) {
                 klass = 'bombed';
                 text = '\u2622';
-                // text = 'B';
             } else {
                 klass = 'explored';
                 count = tile.adjacentBombCount();
@@ -37,10 +36,8 @@ class Tile extends React.Component {
         } else if (tile.flagged) {
             klass = 'flagged'
             text = '\u2691';
-            // text = 'F';
         } else {
             klass = 'unexplored';
-            
         }
 
         klass = `tile ${klass}`;

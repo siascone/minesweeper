@@ -7,5 +7,3 @@ document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById('root');
     ReactDOM.render(<Game />, root);
 });
-
-// ReactDOM.render(<Game />, document.getElementById('root'))
