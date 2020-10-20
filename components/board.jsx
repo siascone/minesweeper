@@ -10,6 +10,7 @@ class Board extends React.Component {
     }
 
     render() {
+        // console.log('board')
         return (
             <div className='baord-gird'>
                 {this.renderRows()}

@@ -6,12 +6,22 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         const board = new Minesweeper.Board(8, 10);
+        // this.subscribers = []
         this.state = { board: board };
 
         this.updateGame = this.updateGame.bind(this);
         this.newGame = this.newGame.bind(this);
         this.dificulty = this.dificulty.bind(this);
+        
     }
+
+    // subscribe = (f, pos) => {
+    //     this.subscribers[pos[0], pos[1]] = f
+    // }
+
+    // unsubscribe = (x, y) => {
+    //     this.subscribers[x][y] = null
+    // }
 
     updateGame(tile, flagged) {
         if (flagged) {
@@ -20,6 +30,7 @@ class Game extends React.Component {
             tile.explore();
         }
 
+        // this.subscribers[tile.pos[0], tile.pos[1]]()
         this.setState({ board: this.state.board });
     }
 

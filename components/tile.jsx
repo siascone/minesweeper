@@ -24,6 +24,7 @@ class Tile extends React.Component {
         let text
         let klass
         let count
+        // console.log('tile')
         if (tile.explored) {
             if (tile.bombed) {
                 klass = 'bombed';
